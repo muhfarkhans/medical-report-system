@@ -45,6 +45,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('blood_type')->nullable();
             $table->string('phone');
+            $table->timestamps();
         });
     }
 

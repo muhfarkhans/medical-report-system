@@ -38,7 +38,8 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="{{ asset("saul/assets/css/style.bundle.css") }}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
-	</head>
+        @yield("css")
+    </head>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" data-kt-app-aside-enabled="true" data-kt-app-aside-fixed="true" data-kt-app-aside-push-toolbar="true" data-kt-app-aside-push-footer="true" class="app-default">
@@ -113,7 +114,7 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 										<!--end::Page title-->
 										<!--begin::Actions-->
-										<a href="#" class="btn btn-sm btn-success ms-3 px-4 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create Project</a>
+										<a href="#" class="btn btn-sm btn-success ms-3 px-4 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" hidden>Create Project</a>
 										<!--end::Actions-->
 									</div>
 									<!--end::Toolbar wrapper-->
@@ -124,6 +125,16 @@ License: For each use you must have a valid license purchased only from above li
 
 							<!--begin::Content-->
                             <div id="kt_app_content" class="app-content flex-column-fluid">
+
+							<div id="kt_app_content_container" class="app-container container-fluid">
+							@if(session('success'))
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								{{ session('success') }}
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+							@endif
+							
+							</div>
 							@yield('content')
                             </div>
 							<!--end::Content-->
@@ -186,7 +197,7 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="{{ asset("saul/assets/js/scripts.bundle.js") }}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Vendors Javascript(used for this page only)-->
-		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="{{ asset("saul/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js") }}"></script>
 		<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 		<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 		<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -198,7 +209,7 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
 		<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
 		<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
-		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<script src="{{ asset("saul/assets/plugins/custom/datatables/datatables.bundle.js") }}"></script>
 		<!--end::Vendors Javascript-->
 		<!--begin::Custom Javascript(used for this page only)-->
 		<script src="{{ asset("saul/assets/js/widgets.bundle.js") }}"></script>
@@ -208,7 +219,8 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="{{ asset("saul/assets/js/custom/utilities/modals/create-account.js") }}"></script>
 		<script src="{{ asset("saul/assets/js/custom/utilities/modals/create-app.js") }}"></script>
 		<script src="{{ asset("saul/assets/js/custom/utilities/modals/users-search.js") }}"></script>
-		<!--end::Custom Javascript-->
+		@stack("js")
+        <!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
