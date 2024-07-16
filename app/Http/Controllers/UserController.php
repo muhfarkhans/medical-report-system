@@ -78,7 +78,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('id', $id)->where('role', 'user')->first();
         return view('user.edit', ['user'=> $user]);
     }
 
@@ -135,7 +135,7 @@ class UserController extends Controller
     public function delete($id)
     {
         UserProfile::where('user_id', $id)->delete();
-        User::where('id', $id)->delete();
+        User::where('id', $id)->where('role', 'user')->delete();
         return redirect()->route('user.index')->with('success', 'User deleted successfully');
     }
 }

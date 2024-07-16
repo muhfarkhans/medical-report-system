@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
@@ -19,5 +20,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [UserController::class,'edit'])->name('edit');
         Route::post('/update/{id}', [UserController::class,'update'])->name('update');
         Route::get('/delete/{id}', [UserController::class,'delete'])->name('delete');
+    });
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/', [AdminController::class,'index'])->name('index');
+        Route::get('/create', [AdminController::class,'create'])->name('create');
+        Route::post('/store', [AdminController::class,'store'])->name('store');
+        Route::get('/edit/{id}', [AdminController::class,'edit'])->name('edit');
+        Route::post('/update/{id}', [AdminController::class,'update'])->name('update');
+        Route::get('/delete/{id}', [AdminController::class,'delete'])->name('delete');
     });
 });

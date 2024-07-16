@@ -80,18 +80,6 @@
 											<!--end:Menu link-->
 										</div>
 										<!--end:Menu item-->
-										<!--begin:Menu item-->
-										<div class="menu-item">
-											<!--begin:Menu link-->
-											<a class="menu-link" href="#" data-kt-page="pro">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Download Excel
-											</a>
-											<!--end:Menu link-->
-										</div>
-										<!--end:Menu item-->
 									</div>
 									<!--end:Menu sub-->
 								</div>
@@ -118,7 +106,7 @@
 										<!--begin:Menu item-->
 										<div class="menu-item">
 											<!--begin:Menu link-->
-											<a class="menu-link active" href="">
+											<a class="menu-link active" href="{{ route('user.index') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -130,7 +118,7 @@
 										<!--begin:Menu item-->
 										<div class="menu-item">
 											<!--begin:Menu link-->
-											<a class="menu-link" href="#" data-kt-page="pro">
+											<a class="menu-link" href="{{ route('admin.index') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
