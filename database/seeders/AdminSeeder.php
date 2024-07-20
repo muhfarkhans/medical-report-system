@@ -28,6 +28,17 @@ class AdminSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'name' => 'guest',
+            'role' => 'guest',
+            'email' => 'guest@guest.guest',
+            'email_verified_at' => now(),
+            'password' => bcrypt('guest'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('users')->insert([
             [
                 'name' => 'Koko',
                 'role' => 'user',

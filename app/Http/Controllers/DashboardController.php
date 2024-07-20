@@ -8,6 +8,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view("template.layout");
+        return view("dashboard.index");
+    }
+
+    public function queue()
+    {
+        return view("dashboard.queue");
     }
 }
