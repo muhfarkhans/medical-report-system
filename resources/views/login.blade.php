@@ -52,7 +52,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Header-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
 							<!--begin::Logo-->
-							<a href="../dist/index.html" class="py-2 py-lg-20">
+							<a href="{{ route('dashboard') }}" class="py-2 py-lg-20">
                                 <h1 style="font-size: 14px; margin: 0; padding: 0">{{ env("APP_NAME") }}</h1>
 							</a>
 							<!--end::Logo-->
@@ -130,6 +130,17 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="indicator-progress">Please wait...
 										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 									</button>
+									<!--end::Submit button-->
+								</div>
+								<!--end::Actions-->
+								<!--begin::Actions-->
+								<div class="text-center">
+									<!--begin::Submit button-->
+									<a href="{{ route('queue') }}">
+										<button type="button" class="btn btn-lg btn-success w-100 mb-5">
+											<span class="indicator-label">Queue Page</span>
+										</button>
+									</a>
 									<!--end::Submit button-->
 								</div>
 								<!--end::Actions-->

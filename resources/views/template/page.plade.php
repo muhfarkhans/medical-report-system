@@ -1,7 +1,6 @@
 @extends('template.layout')
 
 @section('content')
-@section("content")
 <!--begin::Content container-->
 <div id="kt_app_content_container" class="app-container container-fluid">
     <!--begin::Row-->
@@ -45,5 +44,4 @@
     <!--end::Row-->
 </div>
 <!--end::Content container-->
-@endsection
 @endsection

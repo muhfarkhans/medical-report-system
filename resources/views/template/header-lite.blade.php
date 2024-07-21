@@ -9,7 +9,7 @@
 							</div>
 							<!--end::Sidebar mobile toggle-->
 							<!--begin::Logo-->
-							<a href="../dist/index.html" class="app-sidebar-logo">
+							<a href="{{ route('dashboard') }}" class="app-sidebar-logo">
                                 <h1 style="font-size: 14px; margin: 0; padding: 0">{{ env("APP_NAME") }}</h1>
 							</a>
 							<!--end::Logo-->

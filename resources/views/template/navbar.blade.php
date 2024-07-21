@@ -626,9 +626,8 @@
 											<!--end::Avatar-->
 											<!--begin::Username-->
 											<div class="d-flex flex-column">
-												<div class="fw-bold d-flex align-items-center fs-5">Jane Cooper
-												<span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-												<a href="#" class="fw-semibold text-muted text-hover-primary fs-7">jane@kt.com</a>
+												<div class="fw-bold d-flex align-items-center fs-5">{{ Auth::user()->name }}</div>
+												<a href="mailto:{{ Auth::user()->email }}" class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
 											</div>
 											<!--end::Username-->
 										</div>
@@ -638,7 +637,7 @@
 									<div class="separator my-2"></div>
 									<!--end::Menu separator-->
 									<!--begin::Menu item-->
-									<div class="menu-item px-5">
+									<div class="menu-item px-5" hidden>
 										<a href="../dist/account/overview.html" class="menu-link px-5">My Profile</a>
 									</div>
 									<!--end::Menu item-->
@@ -724,7 +723,7 @@
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
-									<div class="menu-item px-5 my-1">
+									<div class="menu-item px-5 my-1" hidden>
 										<a href="../dist/account/settings.html" class="menu-link px-5">Account Settings</a>
 									</div>
 									<!--end::Menu item-->
@@ -741,7 +740,7 @@
 							<!--begin::Action-->
 							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-6">
 								<!--begin::Link-->
-								<a href="{{ route('logout') }}" class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-40px h-40px w-md-40px h-md-40px">
+								<a href="{{ route('queue') }}" class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-40px h-40px w-md-40px h-md-40px">
 									<i class="ki-duotone ki-exit-right fs-1">
 										<span class="path1"></span>
 										<span class="path2"></span>

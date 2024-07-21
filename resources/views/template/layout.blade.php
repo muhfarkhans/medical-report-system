@@ -74,7 +74,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Content wrapper-->
 						<div class="d-flex flex-column flex-column-fluid">
 							<!--begin::Toolbar-->
-							<div id="kt_app_toolbar" class="app-toolbar pt-5">
+							<div id="kt_app_toolbar" class="app-toolbar pt-5" hidden>
 								<!--begin::Toolbar container-->
 								<div id="kt_app_toolbar_container" class="app-container container-fluid d-flex align-items-stretch">
 									<!--begin::Toolbar wrapper-->
