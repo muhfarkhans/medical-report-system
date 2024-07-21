@@ -103,7 +103,6 @@
                 <div class="card-body pt-6">
                     <div class="d-flex flex-column gap-5">
                         <button id="btn-order" class="btn btn-primary btn-lg">Order</button>
-                        <button id="btn-next" class="btn btn-success btn-lg">Next</button>
                     </div>
                 </div>
                 <!--end::Body-->
@@ -123,8 +122,6 @@
     const elNumberCurrent = document.getElementById("current-order-number");
     const elNumber = document.getElementById("order-number");
     const btnOrder = document.getElementById("btn-order");
-    const btnNext = document.getElementById("btn-next");
-
     const socket = io('http://localhost:3000');
 
     socket.on('connect', () => {
@@ -148,11 +145,6 @@
     btnOrder.addEventListener("click", function() {
         let number = parseInt(elNumber.innerText);
         socket.emit("nextOrder", number + 1);
-    })
-
-    btnNext.addEventListener("click", function() {
-        let number = parseInt(elNumberCurrent.innerText);
-        socket.emit("nextCurrent", number + 1);
     })
 </script>
 @endpush
