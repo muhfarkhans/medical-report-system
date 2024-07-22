@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class ReportController extends Controller
 {
@@ -22,7 +23,6 @@ class ReportController extends Controller
     public function create()
     {
         $users = User::with('profile')->where('role', 'user')->orderBy('created_at','desc')->get();
-        // return $users;
         return view('report.create', ['users' => $users]);
     }
 
@@ -112,5 +112,51 @@ class ReportController extends Controller
     {
         Report::where('id', $id)->delete();
         return redirect()->route('report.index')->with('success', 'Report deleted successfully');
+    }
+
+    public function export_excel()
+    {
+        $reports = Report::select(
+            'd.name as doctor_name',
+            'p.name as patient_name',
+            'reports.diagnosis',
+            'reports.treatment',
+            'reports.prescription',
+            'reports.medical_condition',
+            'reports.medical_history',
+            'reports.family_history',
+            'reports.immunizations',
+            'reports.lab_results',
+            'reports.blood_pressure',
+            'reports.created_at',
+            'reports.updated_at'
+        )
+        ->join('users as d', 'reports.doctor_id', '=', 'd.id')
+        ->join('users as p', 'reports.patient_id', '=', 'p.id')
+        ->orderBy('reports.created_at', 'desc')
+        ->get();
+
+        $number = 1;
+
+        $numberedReports = $reports->map(function ($report) use (&$number) {
+            return [
+                'No. ' => $number++,
+                'Doctor' => $report['doctor_name'],
+                'Patient' => $report['patient_name'],
+                'Diagnosis' => $report['diagnosis'],
+                'Treatment' => $report['treatment'],
+                'Prescription' => $report['prescription'],
+                'Medical Condition' => $report['medical_condition'],
+                'Medical History' => $report['medical_history'],
+                'Family History' => $report['family_history'],
+                'Immunizations' => $report['immunizations'],
+                'Lab Results' => $report['lab_results'],
+                'Blood Pressure' => $report['blood_pressure'],
+                'created_at' => $report['created_at']->format('Y-m-d H:i'),
+                'updated_at' => $report['updated_at']->format('Y-m-d H:i'),
+            ];
+        });
+
+        return (new FastExcel($numberedReports))->download('reports.xlsx');
     }
 }

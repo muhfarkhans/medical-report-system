@@ -46,5 +46,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [ReportController::class,'edit'])->name('edit');
         Route::post('/update/{id}', [ReportController::class,'update'])->name('update');
         Route::get('/delete/{id}', [ReportController::class,'delete'])->name('delete');
+        Route::get('/export/excel', [ReportController::class,'export_excel'])->name('export.excel');
     });
 });
